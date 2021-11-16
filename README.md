@@ -1,6 +1,6 @@
 # Software-Project-Management-Simulator
 
-A project for Software Project Managment at Kennesaw State University
+A project for Software Project Management at Kennesaw State University
 
 Team members:
 Eli Conley
