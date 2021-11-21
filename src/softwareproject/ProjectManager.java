@@ -58,6 +58,90 @@ public class ProjectManager {
         }
         System.out.println("------------------------------------------------------------");
 
-        //add more stuff here
+
+
+
+//      PART B
+//      Add requirements
+
+        int size = 10;
+        String[][] requirements = new String[size][6];
+
+        int l = 0;
+        while(true) {
+            System.out.println("Enter a requirement (or stop): ");
+            input = scan.nextLine();
+            if(input.toUpperCase().equals("STOP")) {
+                break;
+            }
+
+            // If user input is not empty it stores value otherwise it does nothing
+            if (!input.isEmpty()) {
+                requirements[l][0] = input;
+                l++;
+            }
+        }
+
+
+
+//      Part C
+
+//      Have a feature that allows the user to enter (at a daily or weekly basis)
+//      the effort in number of person hours expended on Requirements
+//      Analysis, Designing, Coding, Testing,Project Management (by each of the earlier entered requirements)
+        for(int i = 0; i < requirements.length; i++) {
+            if (requirements[i][0] != null) {
+                System.out.print("\nPerson hours expended on: \"" + requirements[i][0] + "\"\nRequirements Analysis: ");
+                input = scan.nextLine();
+                requirements[i][1] = input;
+
+                System.out.print("Designing: ");
+                input = scan.nextLine();
+                requirements[i][2] = input;
+
+                System.out.print("Coding: ");
+                input = scan.nextLine();
+                requirements[i][3] = input;
+
+                System.out.print("Testing: ");
+                input = scan.nextLine();
+                requirements[i][4] = input;
+
+                System.out.print("Project Management: ");
+                input = scan.nextLine();
+                requirements[i][5] = input;
+            } else {
+                break;
+            };
+
+        }
+
+//      Have a feature that allows the user to view the total expended hours by requirements
+//      analysis, designing, coding, testing, project management (by each of the requirement entered)
+        for (int i = 0; i < requirements.length; i++) {
+            if (requirements[i][0] != null) {
+                System.out.println("\n======" + " Requirement: \"" + requirements[i][0] + "\" ======" +
+                        "\n\tAnalysis: \t" + requirements[i][1] +
+                        "\n\tDesigning: \t" + requirements[i][2] +
+                        "\n\tCoding: \t" + requirements[i][3] +
+                        "\n\tTesting: \t" + requirements[i][4] +
+                        "\n\tProj Mgmt: \t" + requirements[i][5]);
+            }
+        }
     }
+
+
+
+//    We can use something like this if we want to make sure the hours are numbers.
+//    public static boolean isNum(String num) {
+//        if (num == null) {
+//            return false;
+//        }
+//        try {
+//            double d = Double.parseDouble(num);
+//        } catch (NumberFormatException nfe) {
+//            return false;
+//        }
+//        return true;
+//    }
 }
