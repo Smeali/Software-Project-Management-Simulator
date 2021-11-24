@@ -65,8 +65,7 @@ public class ProjectManager {
 //      Add requirements
 
         int size = 10;
-        String[][] requirements = new String[size][6];
-
+        String[][] requirements = new String[size][7];
         int l = 0;
         while(true) {
             System.out.println("Enter a requirement (or stop): ");
@@ -75,11 +74,23 @@ public class ProjectManager {
                 break;
             }
 
-            // If user input is not empty it stores value otherwise it does nothing
+            // If user input is not empty it stores value AND whether requirement is functional/non-functional otherwise it does nothing
             if (!input.isEmpty()) {
                 requirements[l][0] = input;
-                l++;
+
+
             }
+
+            while(input.equals("functional") || input.equals("non-functional")){
+                System.out.println("Please type 'functional' or 'non-functional' to classify the requirement: ");
+                input = scan.nextLine();
+                if(input.equals("functional") || input.equals("non-functional")){
+                    break;
+                }
+            }
+            requirements[l][1] = input;
+            l++;
+
         }
 
 
@@ -89,27 +100,28 @@ public class ProjectManager {
 //      Have a feature that allows the user to enter (at a daily or weekly basis)
 //      the effort in number of person hours expended on Requirements
 //      Analysis, Designing, Coding, Testing,Project Management (by each of the earlier entered requirements)
+
         for(int i = 0; i < requirements.length; i++) {
             if (requirements[i][0] != null) {
                 System.out.print("\nPerson hours expended on: \"" + requirements[i][0] + "\"\nRequirements Analysis: ");
                 input = scan.nextLine();
-                requirements[i][1] = input;
+                requirements[i][2] = input;
 
                 System.out.print("Designing: ");
                 input = scan.nextLine();
-                requirements[i][2] = input;
+                requirements[i][3] = input;
 
                 System.out.print("Coding: ");
                 input = scan.nextLine();
-                requirements[i][3] = input;
+                requirements[i][4] = input;
 
                 System.out.print("Testing: ");
                 input = scan.nextLine();
-                requirements[i][4] = input;
+                requirements[i][5] = input;
 
                 System.out.print("Project Management: ");
                 input = scan.nextLine();
-                requirements[i][5] = input;
+                requirements[i][6] = input;
             } else {
                 break;
             };
@@ -120,12 +132,14 @@ public class ProjectManager {
 //      analysis, designing, coding, testing, project management (by each of the requirement entered)
         for (int i = 0; i < requirements.length; i++) {
             if (requirements[i][0] != null) {
+
                 System.out.println("\n======" + " Requirement: \"" + requirements[i][0] + "\" ======" +
-                        "\n\tAnalysis: \t" + requirements[i][1] +
-                        "\n\tDesigning: \t" + requirements[i][2] +
-                        "\n\tCoding: \t" + requirements[i][3] +
-                        "\n\tTesting: \t" + requirements[i][4] +
-                        "\n\tProj Mgmt: \t" + requirements[i][5]);
+                        "\n\tType: \t" + requirements[i][1] +
+                        "\n\tAnalysis: \t" + requirements[i][2] +
+                        "\n\tDesigning: \t" + requirements[i][3] +
+                        "\n\tCoding: \t" + requirements[i][4] +
+                        "\n\tTesting: \t" + requirements[i][5] +
+                        "\n\tProj Mgmt: \t" + requirements[i][6]);
             }
         }
     }
