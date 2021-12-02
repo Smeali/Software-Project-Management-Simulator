@@ -6,19 +6,63 @@ import java.util.ArrayList; //importing arraylist
 import java.util.Scanner; //importing scanner class
 
 public class ProjectManager {
-    static { main(); }
+
+   // static { main(); }
+    private String name;
+    private String desc;
+    private String owner;
+
+    private ArrayList<String> members = new ArrayList<>(); //team members list
+    private ArrayList<String> risks = new ArrayList<>(); //risk list
+    private ArrayList<String> status = new ArrayList<>(); //risk status list
+    private String[][] requirements; // = new String[10][7];
+
+    //Default Constructor
+    public ProjectManager()
+    {
+
+    }
+
+    public ProjectManager(String name, String owner, String desc, ArrayList<String> members, ArrayList<String> risks, ArrayList<String> status, String[][] requirements)
+    {
+        this.name = name;
+        this.owner = owner;
+        this.desc = desc;
+        this.members = members;
+        this.risks = risks;
+        this.status = status;
+        this.requirements = requirements;
+    }
+
+    //Getter and Setter for name
+    public String GetName() { return this.name; }
+    public void SetName(String newName) { this.name = newName; }
+
+    //Getter and Setter for owner
+    public String GetOwner() {return this.owner; }
+    public void SetOwner(String newOwner) { this.owner = newOwner; }
+
+    //Getter and setter for description
+    public String GetDesc() {return this.desc; }
+    public void SetDesc(String newDesc) { this.desc = newDesc; }
+
+
+
+
+/***
+
     public static void main() {
         Scanner scan = new Scanner(System.in); //create scanner
-        ArrayList<String> members = new ArrayList<>(); //team members list
-        ArrayList<String> risk = new ArrayList<>(); //risk list
-        ArrayList<String> status = new ArrayList<>(); //risk status list
         String input; //stores user input in a string
 
-        System.out.print("Enter owner or project manager name: "); //owner or project manager name
-        String name = scan.nextLine(); //name string
+        System.out.print("Enter project  name: "); //owner or project manager name
+        name = scan.nextLine(); //name string
+
+        System.out.print("Enter Project owner: ");
+        owner = scan.nextLine();
 
         System.out.print("Enter description: "); //description of software project
-        String desc = scan.nextLine(); //description string
+        desc = scan.nextLine(); //description string
 
         while(true) { //allows as many team members as needed
             System.out.print("Enter project team member (or stop): ");
@@ -46,7 +90,7 @@ public class ProjectManager {
 //      Add requirements
 
         int size = 10;
-        String[][] requirements = new String[size][7];
+
         int l = 0;
 
         while(true) {
@@ -74,7 +118,7 @@ public class ProjectManager {
             /* If user input is not empty it stores value AND whether requirement is functional/non-functional otherwise it does nothing
             if (!input.isEmpty()) {
                 requirements[l][0] = input;
-            } */
+            }
             requirements[l][0] = input;
 
             System.out.print("Enter the requirement: ");
@@ -120,9 +164,17 @@ public class ProjectManager {
 
         }
 
+
+    }
+**/
+
+
+    public void GetProjectInfo()
+    {
         //printing out the project data
         System.out.println("\n\n----------Project Info----------");
         System.out.println("\tName: " + name);
+        System.out.println("\tOwner: " + owner);
         System.out.println("\tDesc: " + desc);
 
         System.out.print("\tTeam members: "); //prints team members as a list
@@ -134,15 +186,13 @@ public class ProjectManager {
         }
         System.out.println("");
 
-        for(int j = 0; j < risk.size(); j++) { //prints risk and status (one of each per line)
-            System.out.println("\tRisk: " + risk.get(j) + ", Status: " + status.get(j));
+        for(int j = 0; j < risks.size(); j++) { //prints risk and status (one of each per line)
+            System.out.println("\tRisk: " + risks.get(j) + ", Status: " + status.get(j));
         }
 
-        for(int j = 0; j < risk.size(); j++) { //prints type and requirement (one of each per line)
-            System.out.println("\tType: " + requirements[j][0] + ", Requirement: " + requirements[j][1]);
-        }
 
-//      Have a feature that allows the user to view the total expended hours by requirements
+
+//      Have a feature that allows the user to view the total expended hours by requirement
 //      analysis, designing, coding, testing, project management (by each of the requirement entered)
         for (int i = 0; i < requirements.length; i++) {
             if (requirements[i][0] != null) {
@@ -158,7 +208,6 @@ public class ProjectManager {
         }
         System.out.println("--------------------------------");
     }
-
 //    We can use something like this if we want to make sure the hours are numbers.
 //    public static boolean isNum(String num) {
 //        if (num == null) {
