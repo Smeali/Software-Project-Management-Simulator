@@ -204,20 +204,31 @@ public class ProjectManager {
                         "\n\tCoding: \t" + requirements[i][4] +
                         "\n\tTesting: \t" + requirements[i][5] +
                         "\n\tProj Mgmt: \t" + requirements[i][6]);
+
             }
         }
         System.out.println("--------------------------------");
+        int projectHours = 0;
+        String totalHours = "";
+
+        for (int i = 0; i < requirements.length; i ++)
+        {
+            totalHours = requirements[i][2] + ":" +
+                                requirements[i][3] + ":" +
+                                requirements[i][4] + ":" +
+                                requirements[i][5] + ":" +
+                                requirements[i][6];
+        }
+        String[] arrayOfStrings = totalHours.split(":");
+        for (String item: arrayOfStrings)
+        {
+            int x = Integer.parseInt(item);
+            projectHours += x;
+        }
+
+        System.out.println("Total Project Hours: " + projectHours);
+        System.out.println("--------------------------------");
     }
-//    We can use something like this if we want to make sure the hours are numbers.
-//    public static boolean isNum(String num) {
-//        if (num == null) {
-//            return false;
-//        }
-//        try {
-//            double d = Double.parseDouble(num);
-//        } catch (NumberFormatException nfe) {
-//            return false;
-//        }
-//        return true;
-//    }
+
+
 }

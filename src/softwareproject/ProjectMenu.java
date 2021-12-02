@@ -42,7 +42,18 @@ public class ProjectMenu {
 
     public static void ModifyProjects()
     {
+        int i = 0;
+        for(ProjectManager item:projectsList)
+        {
+            i++;
+            System.out.println(i+") Project: " + item.GetName());
+        }
+        System.out.print("Select a project to edit: ");
+        String input = scan.nextLine();
+        int convertedString = Integer.parseInt(input);
 
+        projectsList.remove(convertedString - 1);
+        projectsList.add(CreateProject());
     }
 
     // Method for creating a new project
@@ -95,15 +106,20 @@ public class ProjectMenu {
         // PART B - Add Requirements
         int l = 0;
 
-        // This is where I left off trying to fix part B -- Brandon D. !!!!!!!!!!!!!!!!!!!!!
+        // Allows custom requirements size -- For some reason, this fix was
         System.out.print("Enter the total number of requirements for this project: ");
-        int size = scan.nextInt();
-        requirements = new String[size][7];
+        String size = scan.nextLine();
+        int newSize = Integer.parseInt(size);
+
+        requirements = new String[newSize][7];
 
         while(true) {
+
             System.out.print("Requirement type: 1 - Functional | 2 - Non-Functional (or stop): ");
             String input = scan.nextLine();
-            String choice = "";
+            String choice;
+            choice = "";
+
             if(input.equals("stop")) {
                 break;
             }
@@ -114,22 +130,12 @@ public class ProjectMenu {
                 choice = "Non-Functional";
             }
 
-            /**
-            else {
-                while (true){
-                    System.out.println("Please type '1' or '2' to classify the requirement: ");
-                    input = scan.nextLine();
-                    if(input.equals("1") || input.equals("2")){
-                        break;
-                    }
-                }
-            }
-            **/
+
            // If user input is not empty it stores value AND whether requirement is functional/non-functional otherwise it does nothing
             if (!input.isEmpty()) {
                 requirements[l][0] = choice;
             }
-            requirements[l][0] = input;
+            requirements[l][0] = choice;
 
             System.out.print("Enter the requirement: ");
             input = scan.nextLine();
